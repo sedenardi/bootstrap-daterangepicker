@@ -474,6 +474,23 @@
             }
         },
 
+        setRange: function (r) {
+            if (jQuery.inArray(r, this.ranges)) {
+                var dates = this.ranges[r];
+                this.startDate = dates[0];
+                this.endDate = dates[1];
+
+                this.leftCalendar.month.set({ month: this.startDate.getMonth(), year: this.startDate.getFullYear() });
+                this.rightCalendar.month.set({ month: this.endDate.getMonth(), year: this.endDate.getFullYear() });
+                this.updateCalendars();
+
+                this.changed = true;
+
+                this.container.find('.calendar').hide();
+                this.hide();
+            }
+        },
+
         clickPrev: function (e) {
             var cal = $(e.target).parents('.calendar');
             if (cal.hasClass('left')) {
