@@ -314,6 +314,12 @@
 
         constructor: DateRangePicker,
 
+        destroy: function () {
+            this.element.off();
+            this.container.remove();
+            this.element.removeData(this.type);
+        },
+
         mousedown: function (e) {
             e.stopPropagation();
         },
